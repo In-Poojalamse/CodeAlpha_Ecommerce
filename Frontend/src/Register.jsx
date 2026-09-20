@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -22,7 +23,7 @@ function Register() {
       setLoading(true);
 
       const response = await fetch(
-        "http://localhost:5000/api/users/register",
+        "https://pooja-codealpha-ecommerce-backend.onrender.com/api/users/register",
         {
           method: "POST",
           headers: {

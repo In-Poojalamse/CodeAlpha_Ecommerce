@@ -1,3 +1,4 @@
+
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "./CartContext";
@@ -11,7 +12,9 @@ function App() {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch(
+      "https://pooja-codealpha-ecommerce-backend.onrender.com/api/products"
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch products");

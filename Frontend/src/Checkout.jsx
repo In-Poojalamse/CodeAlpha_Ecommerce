@@ -1,12 +1,10 @@
+
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CartContext } from "./CartContext";
 
 function Checkout() {
-  const {
-    cart,
-    totalAmount,
-  } = useContext(CartContext);
+  const { cart, totalAmount } = useContext(CartContext);
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -33,7 +31,7 @@ function Checkout() {
 
       // Create order
       const orderResponse = await fetch(
-        "http://localhost:5000/api/orders",
+        "https://pooja-codealpha-ecommerce-backend.onrender.com/api/orders",
         {
           method: "POST",
           headers: {
@@ -60,7 +58,7 @@ function Checkout() {
       // Add cart products to order_item table
       for (const item of cart) {
         const itemResponse = await fetch(
-          "http://localhost:5000/api/order-items",
+          "https://pooja-codealpha-ecommerce-backend.onrender.com/api/order-items",
           {
             method: "POST",
             headers: {
@@ -245,21 +243,15 @@ function Checkout() {
               style={{
                 width: "100%",
                 padding: "12px",
-                backgroundColor: placingOrder
-                  ? "#999"
-                  : "#222",
+                backgroundColor: placingOrder ? "#999" : "#222",
                 color: "white",
                 border: "none",
                 borderRadius: "5px",
-                cursor: placingOrder
-                  ? "not-allowed"
-                  : "pointer",
+                cursor: placingOrder ? "not-allowed" : "pointer",
                 fontSize: "16px",
               }}
             >
-              {placingOrder
-                ? "Placing Order..."
-                : "Place Order"}
+              {placingOrder ? "Placing Order..." : "Place Order"}
             </button>
           </form>
         </div>
@@ -314,3 +306,4 @@ function Checkout() {
 }
 
 export default Checkout;
+

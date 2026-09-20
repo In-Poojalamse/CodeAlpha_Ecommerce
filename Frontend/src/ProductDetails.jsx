@@ -1,3 +1,4 @@
+
 import { useEffect, useState, useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { CartContext } from "./CartContext";
@@ -12,7 +13,9 @@ function ProductDetails() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/products/${id}`)
+    fetch(
+      `https://pooja-codealpha-ecommerce-backend.onrender.com/api/products/${id}`
+    )
       .then((response) => response.json())
       .then((data) => {
         setProduct(data);
@@ -47,7 +50,6 @@ function ProductDetails() {
 
   return (
     <div className="product-details-page">
-
       <button
         className="back-button"
         onClick={() => navigate("/")}
@@ -56,7 +58,6 @@ function ProductDetails() {
       </button>
 
       <div className="product-details">
-
         <div className="details-image">
           {product.image ? (
             <img
@@ -69,7 +70,6 @@ function ProductDetails() {
         </div>
 
         <div className="details-content">
-
           <h1>{product.name}</h1>
 
           <p className="details-description">
@@ -90,13 +90,11 @@ function ProductDetails() {
           >
             🛒 Add to Cart
           </button>
-
         </div>
-
       </div>
-
     </div>
   );
 }
 
 export default ProductDetails;
+
